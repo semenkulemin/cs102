@@ -3,16 +3,21 @@ from bottle import (
 )
 from db import News, session
 
+
 @route("/news")
 def news_list():
     s = session()
-    rows = s.query(News).filter(News.label == None).all()
+    rows = s.query(News).filter(News.label is None).all()
     return template('news_template', rows=rows)
 
 
 @route("/add_label/")
 def add_label():
-    # PUT YOUR CODE HERE
+    id_of_news = int(request.query.id)
+    label_of_news = str(request.query.label)
+    s = session()
+    s.query(News).filter_by(id=id_of_news).update({'label': label_of_news})
+    s.commit()
     redirect("/news")
 
 
@@ -30,4 +35,3 @@ def classify_news():
 
 if __name__ == "__main__":
     run(host="localhost", port=8080)
-
