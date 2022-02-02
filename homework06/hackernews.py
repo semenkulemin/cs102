@@ -1,11 +1,7 @@
 from bottle import (
     route, run, template, request, redirect
 )
-
-from scrapper import get_news
 from db import News, session
-from bayes import NaiveBayesClassifier
-
 
 @route("/news")
 def news_list():
@@ -29,6 +25,7 @@ def update_news():
 @route("/classify")
 def classify_news():
     # PUT YOUR CODE HERE
+    return redirect('/recommendations')
 
 
 if __name__ == "__main__":
