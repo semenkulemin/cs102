@@ -9,3 +9,5 @@ requests~=2.5.1
 SQLAlchemy~=1.4.31
 bottle~=0.12.19
 beautifulsoup4~=4.10.0
+tqdm~=4.62.3
+textblob~=0.17.1
